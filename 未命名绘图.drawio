@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-03-29T09:56:36.493Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" etag="CZIfADkj20VoL3rPILKw" version="14.5.1" type="github">
+<mxfile host="app.diagrams.net" modified="2021-03-29T11:11:19.859Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" etag="L1lYjAZcBEsvawvuJbeZ" version="14.5.1" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="3316" dy="1931" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -392,16 +392,16 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="6wZ1TeUxjv15UuRKBNIG-157" value="在类创建的过程中，&lt;b&gt;链接包括方法覆盖&lt;/b&gt;，方法覆盖是虚拟机规范中定义的，而spring中也使用了这一点。&lt;br&gt;你可以使用某些方法替换bean中原有的方法。在spring中主要可用来解决：单例类A中使用多例类B时，每次获取的类B也都是单例的问题。&lt;br&gt;解决方案：&lt;br&gt;1、单例A实现ApplicationContextAware每次获取新的类B使用（耦合了spring）。&lt;br&gt;2、使用方法注入（两种方式：Lookup和method-replace）。&lt;br&gt;&lt;br&gt;本方法就是处理方法注入的第二种方式method-replace的" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;fillColor=#FFFFFF;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="-320" y="-330" width="330" height="215" as="geometry" />
+          <mxGeometry x="-330" y="-635" width="330" height="215" as="geometry" />
         </mxCell>
         <mxCell id="6wZ1TeUxjv15UuRKBNIG-158" value="" style="endArrow=none;startArrow=none;endFill=0;startFill=0;endSize=8;html=1;verticalAlign=bottom;dashed=1;labelBackgroundColor=none;dashPattern=10 10;exitX=0.045;exitY=1.014;exitDx=0;exitDy=0;exitPerimeter=0;strokeColor=#007FFF;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="6wZ1TeUxjv15UuRKBNIG-157" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">
             <mxPoint x="-330" y="-249" as="sourcePoint" />
-            <mxPoint x="-330" y="430" as="targetPoint" />
+            <mxPoint x="-320" y="430" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="6KS0UGnqPW_duq44n-mk-0" value="如果这个bean有”可察觉实例化的前置/后置处理器“那就调用它们，在这些处理器中提供了创建bean的实例的方法，它们将会被调用。&lt;br&gt;当resolveBeforeInstantiation执行完，如果存在上面说的处理器并返回了一个bean的实例，则将这个bean的实例放入容器，结束该bean的后续过程（说明这个bean并没有交给spring去实例化，而是用户自己去实例化的。&lt;br&gt;）。如果没有返回一个bean的实例，则这个bean接下来将交给spring去实例化&lt;br&gt;&lt;br&gt;用途：我们可以用来创建代理bean，实现方式就是：让该bean实现InstantiationAwareBeanPostProcessor接口（或该接口提供的子类，子类功能很强大，例如SmartInstantiationAwareBeanPostProcessor可以指的要创建bean的构造器是哪个，它可以不返回bean的实例，只改写构造方法，在接下来交给spring实例化时，如果有Smartxxx，则会调用其指定的构造器创建bean）。" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;fillColor=#FFFFFF;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-280" y="-60" width="290" height="300" as="geometry" />
+        <mxCell id="6KS0UGnqPW_duq44n-mk-0" value="如果这个bean有”可察觉实例化的前置/后置处理器“那就调用它们，在这些处理器中提供了创建bean的实例的方法，它们将会被调用。&lt;br&gt;当resolveBeforeInstantiation执行完，如果存在上面说的处理器并返回了一个bean的实例，则将这个bean的实例放入容器，结束该bean的后续过程（说明这个bean并没有交给spring去实例化，而是用户自己去实例化的。&lt;br&gt;）。如果没有返回一个bean的实例，则这个bean接下来将交给spring去实例化&lt;br&gt;&lt;br&gt;用途：我们可以用来创建代理bean，实现方式就是：让该bean实现InstantiationAwareBeanPostProcessor初始化感知器接口（或该接口提供的子类，子类功能很强大，例如SmartInstantiationAwareBeanPostProcessor可以指定要创建bean的构造器是哪个，它可以不返回bean的实例，只改写构造方法，在接下来交给spring实例化时，如果有Smartxxx，则会调用其指定的构造器创建bean）。" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;fillColor=#FFFFFF;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-290" y="-400" width="290" height="320" as="geometry" />
         </mxCell>
         <mxCell id="6KS0UGnqPW_duq44n-mk-1" value="" style="endArrow=none;startArrow=none;endFill=0;startFill=0;endSize=8;html=1;verticalAlign=bottom;dashed=1;labelBackgroundColor=none;dashPattern=10 10;entryX=0.024;entryY=1.017;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=#007FFF;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="6KS0UGnqPW_duq44n-mk-0">
           <mxGeometry width="160" relative="1" as="geometry">
@@ -418,10 +418,10 @@
             <mxPoint x="-490" y="1000" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="6KS0UGnqPW_duq44n-mk-16" value="&lt;span&gt;如果有Smartxxx，则获取其返回的构造器，使用该构造器创建类实例，结束。没有就返回null，spring接下来将自己判断寻找合适的构造器。&lt;br&gt;&lt;/span&gt;" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;fillColor=#FFFFFF;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-190" y="460" width="140" height="120" as="geometry" />
+        <mxCell id="6KS0UGnqPW_duq44n-mk-16" value="&lt;span&gt;如果bean的后置处理器中有Smartxxx初始化感知器，则调用它们的determineCandidateConstructors获取其返回的构造器，使用该构造器创建类实例，结束&lt;/span&gt;（如果是在构造器中注入其他bean，则AutowiredAnnotationBeanPostProcessor（Smartxxx的子类）将会起作用，会获取到可以注入的构造方法并返回，接下来会调用autowireConstructor方法，先去创建需要在构造方法中注入的bean（实例化+初始化），然后在在实例化+初始化自己）&lt;span&gt;&lt;br&gt;。没有就返回null，spring接下来将自己判断寻找合适的构造器。&lt;br&gt;&lt;/span&gt;" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;fillColor=#FFFFFF;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-250" y="-60" width="245" height="230" as="geometry" />
         </mxCell>
-        <mxCell id="6KS0UGnqPW_duq44n-mk-17" value="" style="endArrow=none;startArrow=none;endFill=0;startFill=0;endSize=8;html=1;verticalAlign=bottom;dashed=1;labelBackgroundColor=none;dashPattern=10 10;strokeColor=#007FFF;fillColor=#3399FF;entryX=0.199;entryY=-0.075;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="6KS0UGnqPW_duq44n-mk-16" target="6KS0UGnqPW_duq44n-mk-89">
+        <mxCell id="6KS0UGnqPW_duq44n-mk-17" value="" style="endArrow=none;startArrow=none;endFill=0;startFill=0;endSize=8;html=1;verticalAlign=bottom;dashed=1;labelBackgroundColor=none;dashPattern=10 10;strokeColor=#007FFF;fillColor=#3399FF;entryX=0.346;entryY=-0.017;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="6KS0UGnqPW_duq44n-mk-16" target="6KS0UGnqPW_duq44n-mk-89">
           <mxGeometry width="160" relative="1" as="geometry">
             <mxPoint x="-120" y="430" as="sourcePoint" />
             <mxPoint x="270" y="380" as="targetPoint" />
@@ -643,8 +643,8 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="6KS0UGnqPW_duq44n-mk-106" value="&lt;span&gt;如之前InstantiationAwareBeanPostProcessor所说，它除了可以手动实例化之外，还可以手动赋值，所以如果你不想让Spring帮你填充bean属性，你可以将&lt;/span&gt;InstantiationAwareBeanPostProcessor手动实例化方法的return值返回false即可，这样populateBean直接结束。如果你想让Spring帮你填充，将手动实例化方法return值设置为true(默认返回true)即可，接下来Spring就开始填充属性了。&lt;br&gt;填充属性注入属性分为引用形属性和普通属性，对于引用形式属性注入方式有byName和byType具体使用哪一种取决你的设置。&lt;br&gt;&lt;br&gt;以byName注入过程分析：假设当前填充的是bean是BeanA。获取BeanA要注入的属性名称beanB，调用&lt;b&gt;getBean&lt;/b&gt;，注意这里在此回到的最开始处的getBean，先创建依赖的BeanB，发现单例池、早期单例池、单例工厂中都没有BeanB，则开始进入doGetBean去创建BeanB,，流程还和之前创建BeanA一样，一直到BeanB&lt;br&gt;开始populateBean，此刻BeanB在addSingletonFactory方法执行时已经被放入了单例工厂singletonFactories中，开始填充BeanB的属性，填充完后把BeanB赋值给BeanA的属性beanB。如果beanB又依赖了BeanC，过程还和上面一样，填充BeanC，把BeanC赋值给BeanB的beanC属性，再把BeanB赋值给beanA的beanB属性。&lt;br&gt;&lt;br&gt;循环引用问题：如果BeanB又依赖了BeanA，这就造成了循环引用问题，这时候单例工厂singletonFactoires这个属性就起到作用了，在给BeanA属性填充时，发现依赖beanB，创建BeanB，给BeanB属性填充时，发现依赖beanA，然后BeanB又开始创建BeanA，在调用getBean-&amp;gt;doGetBean-&amp;gt;getSingleton方法中虽然BeanA不在单例池singletonObjects中，也不再早期单例池中（BeanA的addSingletonFactory时把自己从早期单例池移除了），但是BeanA在singletonFactories中，这样getSingleton方法就直接返回了BeanA，不在继续走BeanA的创建过程了，到此BeanB的属性beanA先被填充，接下来beanB又做了一系列操作最后返回一个实例。又回到了BeanA填充BeanB的地方，getBean获取了BeanB，把beanB填充到BeanA的beanB属性中，到此循环依赖解决。&lt;br&gt;&lt;br&gt;引用形属性填充完，开始填充普通属性，填充普通属性就简单多了，获取普通属性，然后将InstantiationAwareBeanPostProcessor应用于需要被填充的bean，我们说了，InstantiationAwareBeanPostProcessor中可以实现手动属性填充。如果你没有进行手动属性填充，那只好spring在辛苦一下，进行自动填充普通属性了，填充发方法也很简单，名称对应上，深度复制属性到bean实例中即可" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;fillColor=#FFFFFF;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="249" y="430" width="330" height="670" as="geometry" />
+        <mxCell id="6KS0UGnqPW_duq44n-mk-106" value="&lt;span&gt;如之前InstantiationAwareBeanPostProcessor所说，它除了可以手动实例化之外，还可以手动赋值，所以如果你不想让Spring帮你填充bean属性，你可以将&lt;/span&gt;InstantiationAwareBeanPostProcessor手动实例化方法的return值返回false即可，这样populateBean直接结束。如果你想让Spring帮你填充，将手动实例化方法return值设置为true(默认返回true)即可，接下来Spring就开始填充属性了。&lt;br&gt;填充属性注入属性分为引用形属性和普通属性，对于引用形式属性注入方式有byName和byType具体使用哪一种取决你的设置。&lt;br&gt;&lt;br&gt;以byName注入过程分析：假设当前填充的是bean是BeanA。获取BeanA要注入的属性名称beanB，调用&lt;b&gt;getBean&lt;/b&gt;，注意这里在此回到的最开始处的getBean，先创建依赖的BeanB，发现单例池、早期单例池、单例工厂中都没有BeanB，则开始进入doGetBean去创建BeanB,，流程还和之前创建BeanA一样，一直到BeanB&lt;br&gt;开始populateBean，此刻BeanB在addSingletonFactory方法执行时已经被放入了单例工厂singletonFactories中，开始填充BeanB的属性，填充完后把BeanB赋值给BeanA的属性beanB。如果beanB又依赖了BeanC，过程还和上面一样，填充BeanC，把BeanC赋值给BeanB的beanC属性，再把BeanB赋值给beanA的beanB属性。&lt;br&gt;&lt;br&gt;循环引用问题：如果BeanB又依赖了BeanA，这就造成了循环引用问题，这时候单例工厂singletonFactoires这个属性就起到作用了，在给BeanA属性填充时，发现依赖beanB，创建BeanB，给BeanB属性填充时，发现依赖beanA，然后BeanB又开始创建BeanA，在调用getBean-&amp;gt;doGetBean-&amp;gt;getSingleton方法中虽然BeanA不在单例池singletonObjects中，也不再早期单例池中（BeanA的addSingletonFactory时把自己从早期单例池移除了），但是BeanA在singletonFactories中，从singletonFactories中取出它，并且将其从singletonFactories中移除，&lt;b&gt;然后加入到早期单例池earlySingletonObjects中&lt;/b&gt;（唯一一处往earlySingletonObjects中加数据的地方），这样getSingleton方法就直接返回了BeanA，不在继续走BeanA的创建过程了，到此BeanB的属性beanA先被填充，接下来beanB又做了一系列操作最后返回一个实例。又回到了BeanA填充BeanB的地方，getBean获取了BeanB，把beanB填充到BeanA的beanB属性中，到此循环依赖解决。&lt;br&gt;&lt;br&gt;引用形属性填充完，开始填充普通属性，填充普通属性就简单多了，获取普通属性，然后将InstantiationAwareBeanPostProcessor应用于需要被填充的bean，我们说了，InstantiationAwareBeanPostProcessor中可以实现手动属性填充。如果你没有进行手动属性填充，那只好spring在辛苦一下，进行自动填充普通属性了，填充发方法也很简单，名称对应上，深度复制属性到bean实例中即可" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;fillColor=#FFFFFF;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="249" y="370" width="330" height="730" as="geometry" />
         </mxCell>
         <mxCell id="6KS0UGnqPW_duq44n-mk-107" value="" style="endArrow=none;startArrow=none;endFill=0;startFill=0;endSize=8;html=1;verticalAlign=bottom;dashed=1;labelBackgroundColor=none;dashPattern=10 10;strokeColor=#0066CC;fillColor=#3399FF;entryX=0.078;entryY=1.003;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="6KS0UGnqPW_duq44n-mk-106">
           <mxGeometry width="160" relative="1" as="geometry">
@@ -848,6 +848,9 @@
             <mxPoint x="-1090" y="2170" as="sourcePoint" />
             <mxPoint x="-880" y="2170" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="6KS0UGnqPW_duq44n-mk-154" value="&lt;i&gt;liuwei整理&lt;/i&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-1150" y="-1160" width="127" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
