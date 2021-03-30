@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-03-30T07:29:16.312Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" etag="-VZI4dEP3hq1nN_CCdJf" version="14.5.3" type="github">
+<mxfile host="app.diagrams.net" modified="2021-03-30T09:19:59.559Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" etag="HMPIU4wUQ1p4suFe5yGX" version="14.5.3" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="3283" dy="1600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3316" dy="1931" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -384,10 +384,10 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="6wZ1TeUxjv15UuRKBNIG-151" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;b&gt;AbstractBeanDefinition&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;div style=&quot;height: 2px&quot;&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;fillColor=#FFE599;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="110" y="-720" width="140" height="60" as="geometry" />
+          <mxGeometry x="150" y="-720" width="140" height="60" as="geometry" />
         </mxCell>
         <mxCell id="6wZ1TeUxjv15UuRKBNIG-152" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#FFE599;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="180" y="440" width="10" height="30" as="geometry" />
+          <mxGeometry x="230" y="430" width="10" height="30" as="geometry" />
         </mxCell>
         <mxCell id="6wZ1TeUxjv15UuRKBNIG-156" value="" style="endArrow=none;startArrow=none;endFill=0;startFill=0;endSize=8;html=1;verticalAlign=bottom;dashed=1;labelBackgroundColor=none;dashPattern=10 10;entryX=0.2;entryY=-0.062;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.571;exitY=1.033;exitDx=0;exitDy=0;exitPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="6wZ1TeUxjv15UuRKBNIG-151" target="6wZ1TeUxjv15UuRKBNIG-152" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">
@@ -404,10 +404,10 @@
             <mxPoint x="-330" y="420" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="6KS0UGnqPW_duq44n-mk-0" value="遍历所有BeanPostProcessor，如果这个bean有”实例化前置处理感知器&quot;（即InstantiationAwareBeanPostProcessor接口及其子类）那就调用它们，在这些实例化感知器中提供了手动创建bean的&lt;b&gt;实例化方法&lt;/b&gt;即postProcessBeforeInstantiation&lt;br&gt;，它们将会被调用，你可以自己手动创建的bean然后在做其他操作（例如属性注入等）。如果你在该实例化方法里自己手动创建了一个非null的bean并返回，则接下来将调用该接口父接口的postProcessAfterIninitialization即&lt;b&gt;初始化方法&lt;/b&gt;（你可以做一些初始化回调，例如initMethod回调等），最终将你手动创建的bean返回（注意：一个是instantiation表示实例化，一个是initialization表示初始化，这两个要区分开。&lt;br&gt;）。&lt;br&gt;当resolveBeforeInstantiation执行完，如果存在上面说的感知器并返回了一个非null的bean的实例，则将这个bean的实例放入容器，结束该bean的后续创建过程（说明这个bean并没有交给spring去实例化并填充属性的，而是用户自己去实例化并填充属性的。如果返回一个null，则这个bean接下来将交给spring去实例化&lt;br&gt;&lt;br&gt;用途：我们可以用来创建代理bean，实现方式就是：让该bean实现InstantiationAwareBeanPostProcessor实例化感知器接口并手动实例化自己想要创建的bean（或该接口提供的子类，接口除了可以直接手动创建bean实例之外，还可以改写属性。子类功能也很强大，例如SmartInstantiationAwareBeanPostProcessor（下文简称Smartxxx）可以指定要创建bean的构造器是哪个，它可以不手动创建bean的实例，只改写构造方法，在接下来交给spring实例化时，如果有Smartxxx，则会调用其指定的构造器创建bean，Smartxxx还有一个postProcessAfterInstantiation&lt;br&gt;方法，用来告诉spring是否需要帮我做属性填充，如果返回true则表示需要帮我，如果返回false则表示不需要，默认返回true）。&lt;br&gt;说到创建代理bean，忍不住多说两句，spring AOP人人皆知，Aop的原理就是使用代理对象去做某些事情。除了刚才所说，你可以自己手动创建代理bean对象，spring自身也提供了创建代理bean对象的方式，创建过程是交由AbstractAutoProxyCreator（或其子类）完成的，AbstractAutoProxyCreator是Smartxxx的子类，" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;fillColor=#FFFFFF;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="-300" y="-455" width="450" height="495" as="geometry" />
+        <mxCell id="6KS0UGnqPW_duq44n-mk-0" value="遍历所有BeanPostProcessor，如果这个bean有”实例化前置处理感知器&quot;（即InstantiationAwareBeanPostProcessor接口及其子类）那就调用它们，在这些实例化感知器中提供了手动创建bean的&lt;b&gt;实例化方法&lt;/b&gt;即postProcessBeforeInstantiation&lt;br&gt;，它们将会被调用，你可以自己手动创建的bean然后在做其他操作（例如属性注入等）。如果你在该实例化方法里自己手动创建了一个非null的bean并返回，则接下来将调用该接口父接口的postProcessAfterIninitialization即&lt;b&gt;初始化方法&lt;/b&gt;（你可以做一些初始化回调，例如initMethod回调等），最终将你手动创建的bean返回（注意：一个是instantiation表示实例化，一个是initialization表示初始化，这两个要区分开。&lt;br&gt;）。&lt;br&gt;当resolveBeforeInstantiation执行完，如果存在上面说的感知器并返回了一个非null的bean的实例，则将这个bean的实例放入容器，结束该bean的后续创建过程（说明这个bean并没有交给spring去实例化并填充属性的，而是用户自己去实例化并填充属性的。如果返回一个null，则这个bean接下来将交给spring去实例化&lt;br&gt;&lt;br&gt;用途：我们可以用来创建代理bean，实现方式就是：让该bean实现InstantiationAwareBeanPostProcessor实例化感知器接口并手动实例化自己想要创建的bean（或该接口提供的子类，接口除了可以直接手动创建bean实例之外，还可以改写属性。子类功能也很强大，例如SmartInstantiationAwareBeanPostProcessor（下文简称Smartxxx）可以指定要创建bean的构造器是哪个，它可以不手动创建bean的实例，只改写构造方法，在接下来交给spring实例化时，如果有Smartxxx，则会调用其指定的构造器创建bean，Smartxxx还有一个postProcessAfterInstantiation&lt;br&gt;方法，用来告诉spring是否需要帮我做属性填充，如果返回true则表示需要帮我，如果返回false则表示不需要，默认返回true）。&lt;br&gt;说到创建代理bean，忍不住多说两句，spring AOP人人皆知，Aop的原理就是使用代理对象去做某些事情。除了刚才所说，你可以自己手动创建代理bean对象，&lt;br&gt;spring自身也提供了创建代理bean对象的方式，注意Spring创建代理对象分为两种，这第一种是在前置实例化方法（AbstractAutoProxyCreator#postProcessBeforeInstantiation&lt;br&gt;）创建的，第二种是在后置实例化方法(AbstractAutoProxyCreator#postProcessorAfterInitialization&lt;br&gt;)中创建的。&lt;br&gt;先来说第一种：若当前要创建的bean有自定义的TargetSource，则在前置实例化方法创建该bean的代理并返回，没有就返回null。&lt;br&gt;第二种：第二种是在第30步时才做的，创建那些我们平常工作中常用的代理例如日志，事务等。&lt;br&gt;&lt;br&gt;过程就是：遍历BeanPostProcessor，将会出现一个AspectJAwareAdvisorAutoProxyCreator类型，它是AbstractAutoProxyCreator的子类，AbstractAutoProxyCreator又是Smartxxx的子类。然后调用实例化前置方法..." style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;fillColor=#FFFFFF;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-300" y="-470" width="515" height="560" as="geometry" />
         </mxCell>
-        <mxCell id="6KS0UGnqPW_duq44n-mk-1" value="" style="endArrow=none;startArrow=none;endFill=0;startFill=0;endSize=8;html=1;verticalAlign=bottom;dashed=1;labelBackgroundColor=none;dashPattern=10 10;entryX=0.024;entryY=1.017;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=#007FFF;" parent="WIyWlLk6GJQsqaUBKTNV-1" target="6KS0UGnqPW_duq44n-mk-0" edge="1">
+        <mxCell id="6KS0UGnqPW_duq44n-mk-1" value="" style="endArrow=none;startArrow=none;endFill=0;startFill=0;endSize=8;html=1;verticalAlign=bottom;dashed=1;labelBackgroundColor=none;dashPattern=10 10;entryX=0.066;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=#007FFF;" parent="WIyWlLk6GJQsqaUBKTNV-1" target="6KS0UGnqPW_duq44n-mk-0" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">
             <mxPoint x="-300" y="520" as="sourcePoint" />
             <mxPoint x="-110" y="80" as="targetPoint" />
@@ -423,7 +423,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="6KS0UGnqPW_duq44n-mk-16" value="&lt;span&gt;如果bean的后置处理器中有Smartxxx初始化感知器，则调用它们的determineCandidateConstructors获取其返回的构造器，结束（第20步）。&lt;/span&gt;&lt;span&gt;&lt;br&gt;。没有就返回null，spring接下来将自己判断寻找合适的构造器(第21、22步骤)。&lt;br&gt;&lt;br&gt;&lt;/span&gt;如果是在构造器中注入其他bean，则AutowiredAnnotationBeanPostProcessor（Smartxxx的子类）将会起作用，会获取到可以注入的构造方法并返回，接下调用ConstructorResolver#autowireConstructor方法，然后进入ConstructorResolver#resolveConstructorArguments方法，在该方法里遍历所有参数，给每一个参数调用BeanDefinitionValueResolver#resolveValueIfNecessary，在resolveValueIfNecessary中使用许多的if判断，判断当前要被创建的参数是什么类型，如果是使用构造函数注入的话，这个参数属于RuntimeBeanReference类型，然后进入BeanDefinitionValueResolver#resolveInnerBean，在resolveInnerBean中，先合并bean的定义，然后解决该参数bean的depends-on的bean，最后调用AbstractAutowireCapableBeanFactory#createBean（又回到第14步）创建当前参数bean。至此当前bean的构造参数里依赖的其他bean已经注册完成，接下来，构造参数有了，构造参数里依赖的参数也都创建好了，直接进入第23步。&lt;span&gt;&lt;br&gt;&lt;/span&gt;" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;fillColor=#FFFFFF;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="-268.75" y="100" width="427.5" height="290" as="geometry" />
+          <mxGeometry x="-230" y="110" width="427.5" height="290" as="geometry" />
         </mxCell>
         <mxCell id="6KS0UGnqPW_duq44n-mk-17" value="" style="endArrow=none;startArrow=none;endFill=0;startFill=0;endSize=8;html=1;verticalAlign=bottom;dashed=1;labelBackgroundColor=none;dashPattern=10 10;strokeColor=#007FFF;fillColor=#3399FF;entryX=0.346;entryY=-0.017;entryDx=0;entryDy=0;entryPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="6KS0UGnqPW_duq44n-mk-16" target="6KS0UGnqPW_duq44n-mk-89" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">
@@ -540,13 +540,14 @@
             <mxPoint x="-390" y="-70" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="6KS0UGnqPW_duq44n-mk-61" value="&lt;span style=&quot;font-size: 12px ; text-align: center ; background-color: rgb(248 , 249 , 250)&quot;&gt;16、prepareMethodOverrides&lt;/span&gt;" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;entryX=-0.15;entryY=0.2;strokeColor=#000000;fillColor=#3399FF;exitX=1;exitY=0.086;exitDx=0;exitDy=0;exitPerimeter=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="6wZ1TeUxjv15UuRKBNIG-128" target="6wZ1TeUxjv15UuRKBNIG-152" edge="1">
+        <mxCell id="6KS0UGnqPW_duq44n-mk-61" value="&lt;span style=&quot;font-size: 12px ; text-align: center ; background-color: rgb(248 , 249 , 250)&quot;&gt;16、prepareMethodOverrides&lt;/span&gt;" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;strokeColor=#000000;fillColor=#3399FF;exitX=1;exitY=0.086;exitDx=0;exitDy=0;exitPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="6wZ1TeUxjv15UuRKBNIG-128" edge="1">
           <mxGeometry x="-0.906" y="16" relative="1" as="geometry">
             <mxPoint x="-345" y="430" as="sourcePoint" />
             <Array as="points">
               <mxPoint x="-350" y="446" />
             </Array>
             <mxPoint as="offset" />
+            <mxPoint x="230" y="446" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="6KS0UGnqPW_duq44n-mk-77" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#FFE599;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
@@ -733,8 +734,8 @@
         <mxCell id="6KS0UGnqPW_duq44n-mk-125" value="遍历所有BeanPostProcessor，调用bean的初始化前置方法。&lt;br&gt;在这里要说一下，CommonAnnotationBeanPostProcessor没有重写父类InitDestoryAnnotationBeanPostProcessor的postProcessBeforeInitialization方法，所以在执行初始化前置方法时，使用注解@PostConstruct注册的bean的生命周期初始化回调方法就被执行了" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;fillColor=#FFFFFF;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="70" y="1250" width="250" height="180" as="geometry" />
         </mxCell>
-        <mxCell id="6KS0UGnqPW_duq44n-mk-126" value="遍历所有BeanPostProcessor，调用bean的初始化后置方法" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;fillColor=#FFFFFF;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry y="1560" width="140" height="88.5" as="geometry" />
+        <mxCell id="6KS0UGnqPW_duq44n-mk-126" value="遍历所有BeanPostProcessor，调用bean的初始化后置方法。&lt;br&gt;&lt;br&gt;如果使用了AOP，遍历BenPostProcessor时将会出现一个AspectJAwareAdvisorAutoProxyCreator类型的BeanPostProcessor，调用它的后置初始化方法，其实调用的是它父类AbstractAutoProxyCreator的后置初始化方法，在这里创建了代理bean，并返回（所有这就是为什么这个bean最终会对应一个代理bean的原因）。" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;fillColor=#FFFFFF;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry y="1560" width="320" height="170" as="geometry" />
         </mxCell>
         <mxCell id="6KS0UGnqPW_duq44n-mk-127" value="调用bean生命周期初始化回调方法，先调用实现InitializingBean接口的afterPropertiesSet方法，最后调用在配置文件使用init属性指定的初始化方法。" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;fillColor=#FFFFFF;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="-160" y="1440" width="230" height="100" as="geometry" />
@@ -846,7 +847,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="6KS0UGnqPW_duq44n-mk-152" value="最后，在判断当前bean是不是SmartInitializingSingleton类型，如果是，就调用它的afterSingletonsInstantiated" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;fillColor=#FFFFFF;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="-870" y="2140" width="160" height="155" as="geometry" />
+          <mxGeometry x="-870" y="2140" width="160" height="100" as="geometry" />
         </mxCell>
         <mxCell id="6KS0UGnqPW_duq44n-mk-153" value="" style="endArrow=none;startArrow=none;endFill=0;startFill=0;endSize=8;html=1;verticalAlign=bottom;dashed=1;labelBackgroundColor=none;dashPattern=10 10;strokeColor=#000000;fillColor=#3399FF;exitX=0.9;exitY=0.995;exitDx=0;exitDy=0;exitPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="6wZ1TeUxjv15UuRKBNIG-61" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">
