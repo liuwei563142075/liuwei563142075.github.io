@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-03-30T01:27:23.205Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" etag="33pcWNNWl8mG0g99DBK8" version="14.5.3" type="github">
+<mxfile host="app.diagrams.net" modified="2021-03-30T03:23:40.376Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" etag="LWxwkykhV82p8KM0sCU6" version="14.5.3" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="3316" dy="1931" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -220,7 +220,7 @@
           <mxGeometry x="-740" y="-360" width="100" height="30" as="geometry" />
         </mxCell>
         <mxCell id="6wZ1TeUxjv15UuRKBNIG-105" value="从singletonObjects单例池中获取bean，存在则返回，不存在如果这个bean是正在被创建的bean，则从早期单例池（earlySingletonObjects）获取早期单例并返回，如果不存在早期单例且允许早期引用，则锁定单例池，不允许任何其他线程在创建bean，然后在此从单例池中取，找不到继续从早期单例池中取，还找不到就从单例工厂(singletonFactories)取，一直都找不到就返回null。&lt;br&gt;&lt;br&gt;此处返回null，因为employee并不在单例池且不是正在被创建的bean。" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;fillColor=#FFFFFF;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="-740" y="-645" width="370" height="165" as="geometry" />
+          <mxGeometry x="-740" y="-640" width="370" height="160" as="geometry" />
         </mxCell>
         <mxCell id="6wZ1TeUxjv15UuRKBNIG-110" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#FFE599;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="-740" y="-220" width="10" height="40" as="geometry" />
@@ -235,7 +235,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="6wZ1TeUxjv15UuRKBNIG-112" value="单例池中没该bean,如果存在父工厂，企图在父工厂中找该bean" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;fillColor=#FFFFFF;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="-535" y="-470" width="150" height="80" as="geometry" />
+          <mxGeometry x="-530" y="-460" width="150" height="80" as="geometry" />
         </mxCell>
         <mxCell id="6wZ1TeUxjv15UuRKBNIG-113" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#FFE599;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="-740" y="-140" width="10" height="40" as="geometry" />
@@ -250,7 +250,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="6wZ1TeUxjv15UuRKBNIG-115" value="将当前正在被创建的bean名添加到alreadCreated中，并将当前bean的合并标注位设置为true" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;fillColor=#FFFFFF;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="-535" y="-380" width="150" height="90" as="geometry" />
+          <mxGeometry x="-530" y="-360" width="150" height="90" as="geometry" />
         </mxCell>
         <mxCell id="6wZ1TeUxjv15UuRKBNIG-118" value="&lt;span style=&quot;color: rgb(0 , 0 , 0) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 11px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: left ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(255 , 255 , 255) ; display: inline ; float: none&quot;&gt;9、markBeanAsCreated&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="-720" y="-190" width="140" height="20" as="geometry" />
@@ -268,7 +268,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="6wZ1TeUxjv15UuRKBNIG-121" value="获取合并后的bean定义信息" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;fillColor=#FFFFFF;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="-535" y="-280" width="150" height="70" as="geometry" />
+          <mxGeometry x="-520" y="-235" width="150" height="70" as="geometry" />
         </mxCell>
         <mxCell id="6wZ1TeUxjv15UuRKBNIG-122" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#FFE599;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="-740" y="40" width="10" height="40" as="geometry" />
@@ -303,7 +303,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="6wZ1TeUxjv15UuRKBNIG-126" value="如果当前bean定义是单例bean，则获取该单例bean" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;fillColor=#FFFFFF;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="-530" y="-200" width="150" height="90" as="geometry" />
+          <mxGeometry x="-510" y="-110" width="150" height="90" as="geometry" />
         </mxCell>
         <mxCell id="6wZ1TeUxjv15UuRKBNIG-127" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;b&gt;AbstractAutowireCapableObjectFactory&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;div style=&quot;height: 2px&quot;&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;fillColor=#FFE599;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="-490" y="-720" width="250" height="60" as="geometry" />
@@ -422,7 +422,7 @@
             <mxPoint x="-490" y="1000" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="6KS0UGnqPW_duq44n-mk-16" value="&lt;span&gt;如果bean的后置处理器中有Smartxxx初始化感知器，则调用它们的determineCandidateConstructors获取其返回的构造器，结束（第20步）。&lt;/span&gt;&lt;span&gt;&lt;br&gt;。没有就返回null，spring接下来将自己判断寻找合适的构造器(第21、22步骤)。&lt;br&gt;&lt;br&gt;&lt;/span&gt;如果是在构造器中注入其他bean，则AutowiredAnnotationBeanPostProcessor（Smartxxx的子类）将会起作用，会获取到可以注入的构造方法并返回，接下调用ConstructorResolver#autowireConstructor方法，然后进入ConstructorResolver#resolveConstructorArguments方法，在该方法里遍历所有参数，给每一个参数调用BeanDefinitionValueResolver#resolveValueIfNecessary，在resolveValueIfNecessary中使用许多的if判断，判断当前要被创建的参数是什么类型，如果是使用构造函数注入的话，这个参数肯定是个BeanDefinition类型，然后进入BeanDefinitionValueResolver#resolveInnerBean，在resolveInnerBean中，先合并bean的定义，然后解决该参数bean的depends-on的bean，最后调用AbstractAutowireCapableBeanFactory#createBean（又回到第14步）创建当前参数bean。至此当前bean的构造参数里依赖的其他bean已经注册完成，接下来，构造参数有了，构造参数里依赖的参数也都创建好了，直接进入第23步。&lt;span&gt;&lt;br&gt;&lt;/span&gt;" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;fillColor=#FFFFFF;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+        <mxCell id="6KS0UGnqPW_duq44n-mk-16" value="&lt;span&gt;如果bean的后置处理器中有Smartxxx初始化感知器，则调用它们的determineCandidateConstructors获取其返回的构造器，结束（第20步）。&lt;/span&gt;&lt;span&gt;&lt;br&gt;。没有就返回null，spring接下来将自己判断寻找合适的构造器(第21、22步骤)。&lt;br&gt;&lt;br&gt;&lt;/span&gt;如果是在构造器中注入其他bean，则AutowiredAnnotationBeanPostProcessor（Smartxxx的子类）将会起作用，会获取到可以注入的构造方法并返回，接下调用ConstructorResolver#autowireConstructor方法，然后进入ConstructorResolver#resolveConstructorArguments方法，在该方法里遍历所有参数，给每一个参数调用BeanDefinitionValueResolver#resolveValueIfNecessary，在resolveValueIfNecessary中使用许多的if判断，判断当前要被创建的参数是什么类型，如果是使用构造函数注入的话，这个参数属于RuntimeBeanReference类型，然后进入BeanDefinitionValueResolver#resolveInnerBean，在resolveInnerBean中，先合并bean的定义，然后解决该参数bean的depends-on的bean，最后调用AbstractAutowireCapableBeanFactory#createBean（又回到第14步）创建当前参数bean。至此当前bean的构造参数里依赖的其他bean已经注册完成，接下来，构造参数有了，构造参数里依赖的参数也都创建好了，直接进入第23步。&lt;span&gt;&lt;br&gt;&lt;/span&gt;" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;fillColor=#FFFFFF;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="-270" y="-220" width="427.5" height="290" as="geometry" />
         </mxCell>
         <mxCell id="6KS0UGnqPW_duq44n-mk-17" value="" style="endArrow=none;startArrow=none;endFill=0;startFill=0;endSize=8;html=1;verticalAlign=bottom;dashed=1;labelBackgroundColor=none;dashPattern=10 10;strokeColor=#007FFF;fillColor=#3399FF;entryX=0.346;entryY=-0.017;entryDx=0;entryDy=0;entryPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="6KS0UGnqPW_duq44n-mk-16" target="6KS0UGnqPW_duq44n-mk-89" edge="1">
@@ -531,12 +531,12 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="6KS0UGnqPW_duq44n-mk-54" value="把当前要创建bean的名称放入singletonsCurrentlyInCreation中" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;fillColor=#FFFFFF;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="-530" y="-100" width="165" height="80" as="geometry" />
+        <mxCell id="6KS0UGnqPW_duq44n-mk-54" value="&lt;b&gt;把当前要创建bean的名称放入singletonsCurrentlyInCreation中，注意singletonsCurrentlyInCreation是一个set，往set中添加元素，如果添加的元素不存在则会返回true，再次添加重复元素时返回false。&lt;br&gt;在这里存在循环引用判断，如果当前创建的bean名称以及在singletonsCurrentlyInCreation中存在，则抛出循环引用异常。&lt;/b&gt;" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;fillColor=#FFFFFF;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-980" y="40" width="185" height="230" as="geometry" />
         </mxCell>
-        <mxCell id="6KS0UGnqPW_duq44n-mk-55" value="" style="endArrow=none;startArrow=none;endFill=0;startFill=0;endSize=8;html=1;verticalAlign=bottom;dashed=1;labelBackgroundColor=none;dashPattern=10 10;strokeColor=#0066CC;fillColor=#3399FF;entryX=-0.012;entryY=0.925;entryDx=0;entryDy=0;entryPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" target="6KS0UGnqPW_duq44n-mk-54" edge="1">
+        <mxCell id="6KS0UGnqPW_duq44n-mk-55" value="" style="endArrow=none;startArrow=none;endFill=0;startFill=0;endSize=8;html=1;verticalAlign=bottom;dashed=1;labelBackgroundColor=none;dashPattern=10 10;strokeColor=#0066CC;fillColor=#3399FF;entryX=1;entryY=0.446;entryDx=0;entryDy=0;entryPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" target="6KS0UGnqPW_duq44n-mk-54" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="-630" y="170" as="sourcePoint" />
+            <mxPoint x="-690" y="170" as="sourcePoint" />
             <mxPoint x="-390" y="-70" as="targetPoint" />
           </mxGeometry>
         </mxCell>
